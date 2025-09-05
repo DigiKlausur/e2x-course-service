@@ -1,0 +1,84 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "e2x-course-service"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Tim Metzler", email = "tim.metzler@h-brs.de" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "jupyterhub",
+  "tornado",
+  "jinja2"
+]
+
+[project.urls]
+Documentation = "https://github.com/Digiklausur/e2x-course-service#readme"
+Issues = "https://github.com/Digiklausur/e2x-course-service/issues"
+Source = "https://github.com/Digiklausur/e2x-course-service"
+
+[project.optional-dependencies]
+dev = [
+  "pre-commit",
+  "ruff",
+  "tbump",
+]
+
+[tool.hatch.version]
+path = "e2x_course_service/__about__.py"
+
+[tool.hatch.build.targets.sdist]
+artifacts = ["share/e2x_course_service"]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"share/e2x_course_service" = "share/e2x_course_service"
+
+[tool.hatch.build.hooks.jupyter-builder]
+dependencies = ["hatch-jupyter-builder"]
+build-function = "hatch_jupyter_builder.npm_builder"
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+path = "ui"
+
+[tool.tbump]
+github_url = "https://github.com/Digiklausur/e2x-course-service"
+
+[tool.tbump.version]
+current = "0.1.0"
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+  (?P<rc>rc\d+)?
+  '''
+
+[tool.tbump.git]
+message_template = "Bump to {new_version}"
+tag_template = "v{new_version}"
+
+# Files with the version to update
+[[tool.tbump.file]]
+src = "e2x_course_service/__about__.py"
+
+[tool.ruff]
+line-length = 100
+lint.select = ["F", "E", "I"]
