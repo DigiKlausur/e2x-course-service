@@ -10,6 +10,14 @@ A JupyterHub service for managing course members in the e2x ecosystem. This serv
 - **Role-based Access**: Only graders can manage course membership
 - **Web Interface**: Clean, responsive UI built with Grid.js and SweetAlert2
 
+## Screenshots
+
+![Course Management Interface](docs/images/course-overview.png)
+*Course management interface showing available courses*
+
+![Member Management](docs/images/course-members.png)
+*Managing course members - adding and removing students and graders*
+
 ## Installation
 
 ```bash
