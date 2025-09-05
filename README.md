@@ -13,7 +13,7 @@ A JupyterHub service for managing course members in the e2x ecosystem. This serv
 ## Installation
 
 ```bash
-pip install e2x-course-service
+pip install --no-cache-dir git+https://github.com/Digiklausur/e2x-course-service.git
 ```
 
 Or for development:
@@ -79,6 +79,33 @@ c.JupyterHub.services = [
             '--CourseServiceApp.course_base_path=/path/to/course/data,
             '--CourseServiceApp.port=10101'
         ],
+    }
+]
+```
+
+Add the role for the course-service:
+
+```python
+c.JupyterHub.loadRoles = [
+    {
+        'name': 'course-service',
+        'description': 'allow access to the course service',
+        'services': ['course-service'],
+        'scopes': [
+            'self',
+            'access:services!service=course-service',
+            'admin:users',
+            'list:users',
+            'delete:users'
+        ]
+    },
+    {
+        'name': 'user',
+        'description': 'basic user access to course service',
+        'scopes': [
+            'self',
+            'access:services!service=course-service'
+        ]
     }
 ]
 ```
