@@ -1,0 +1,19 @@
+{% extends "base.j2" %}
+
+{% block body %}
+  <div id="app">
+  <h1>e2x course service</h1>
+  <p>Here you can manage course members for all your courses. Select a course below to get started.</p>
+  <div id="course-table"></div>
+  </div>
+  <script type="text/javascript">
+    // Initialize the course table after the document is fully loaded
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.Tables && window.Tables.initCourseTable) {
+        window.Tables.initCourseTable("course-table");
+      } else {
+        console.error("Tables module is not loaded.");
+      }
+    });
+  </script>
+{% endblock %}

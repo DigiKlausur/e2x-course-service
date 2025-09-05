@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>{% block title %}e2x Course Service{% endblock %}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script type="text/javascript">
+      window.APP_CONFIG = {
+        service_prefix: "{{ service_prefix }}",
+        api_url: "{{ api_url }}",
+        hub_url: "{{ hub_url }}",
+        user: "{{ user }}",
+      };
+    </script>
+    <link rel="stylesheet" href="{{ service_prefix }}/static/main.css" />
+    <script type="module" src="{{ service_prefix }}/static/main.js"></script>
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+  <a href="{{ hub_url }}">Back to JupyterHub</a>
+    {% block body %}{% endblock %}
+  </body>
+</html>

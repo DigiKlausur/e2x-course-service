@@ -1,0 +1,24 @@
+{% extends "base.j2" %}
+
+{% block body %}
+  <a href="{{ service_prefix }}">Back to course list</a>
+  <div id="app">
+  <h1>Manage {{ course_id }}-{{ semester }}</h1>
+  <p>Here you can manage course members for the selected course. Just click "Add Students" or "Add Graders"
+     to add new members, or use the "Delete" button in the table to remove existing members.</p>
+  <div id="course-member-table"></div>
+  </div>
+  <script type="text/javascript">
+    // Initialize the course table after the document is fully loaded
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.Tables && window.Tables.initCourseMemberTable) {
+        window.Tables.initCourseMemberTable("course-member-table", 
+          "{{ course_id }}",
+          "{{ semester }}"
+        );
+      } else {
+        console.error("Tables module is not loaded.");
+      }
+    });
+  </script>
+{% endblock %}
