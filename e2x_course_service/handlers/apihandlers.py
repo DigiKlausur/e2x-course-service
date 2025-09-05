@@ -21,6 +21,7 @@ class ListGraderCoursesHandler(BaseAPIHandler):
             )
         )
 
+
 class CourseMembersHandler(BaseAPIHandler):
     def _validate_grader_access(self, course_id, semester):
         """Validate that current user is a grader for the specified course.
@@ -117,7 +118,9 @@ class CourseMembersHandler(BaseAPIHandler):
             )
             self.finish()
             return
-        added = updated.get("student_changes", {}).get("add", []) + updated.get("grader_changes", {}).get("add", [])
+        added = updated.get("student_changes", {}).get("add", []) + updated.get(
+            "grader_changes", {}
+        ).get("add", [])
         if add_to_hub and added:
             # Check if users exist in JupyterHub, create them if not
             existing_users_resp = await self.api.list_users()

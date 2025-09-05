@@ -29,7 +29,7 @@ class CourseManager:
             for course_id in courses[kind]:
                 courses[kind][course_id] = sorted(courses[kind][course_id])
         return courses
-    
+
     def list_grader_courses_for_user(self, user: str):
         courses = []
         # For each course put the course_id, semester, number of graders, number of students
