@@ -1,0 +1,22 @@
+{
+  "name": "ui",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/index.js --bundle --minify --sourcemap --outfile=../share/e2x_course_service/static/main.js --metafile=meta.json",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"src/**/*.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "esbuild": "0.25.9",
+    "prettier": "^3.6.2"
+  },
+  "dependencies": {
+    "gridjs": "^6.2.0",
+    "sweetalert2": "^11.23.0"
+  }
+}
