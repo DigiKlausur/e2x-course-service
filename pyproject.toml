@@ -79,6 +79,14 @@ tag_template = "v{new_version}"
 [[tool.tbump.file]]
 src = "e2x_course_service/__about__.py"
 
+[[tool.tbump.before_commit]]
+name = "Build"
+cmd = "python -m build"
+
+[[tool.tbump.before_commit]]
+name = "Check with twine"
+cmd = "twine check dist/*"
+
 [tool.ruff]
 line-length = 100
 lint.select = ["F", "E", "I"]
