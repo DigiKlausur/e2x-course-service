@@ -61,7 +61,7 @@ path = "ui"
 github_url = "https://github.com/Digiklausur/e2x-course-service"
 
 [tool.tbump.version]
-current = "0.1.0"
+current = "0.1.1rc0"
 regex = '''
   (?P<major>\d+)
   \.
