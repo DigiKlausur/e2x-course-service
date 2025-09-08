@@ -44,6 +44,11 @@ dev = [
 [tool.hatch.version]
 path = "e2x_course_service/__about__.py"
 
+[tool.hatch.build]
+artifacts = [
+    "share/e2x_course_service/"
+]
+
 [tool.hatch.build.targets.sdist]
 artifacts = ["share/e2x_course_service"]
 
